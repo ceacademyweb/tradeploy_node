@@ -15,19 +15,20 @@
 
     <script>
         const checkout = document.getElementById("checkout");
-        // checkout.addEventListener('click', () => {
-        //     axios.post('/create-order')
-        //         .then((res)=>{
-        //         console.log(res.data)})
-        // })
-        checkout.addEventListener("click", async () => {
-            const response = await fetch("/create-order", {
-                method: "POST",
-            });
-            const data = await response.json();
-            console.log(data)
-            // window.location.href = data.links[1].href
-        });
+        checkout.addEventListener('click', () => {
+            axios.post('/create-order')
+                .then((res)=>{
+                    console.log(res.data)
+                })
+        })
+        // checkout.addEventListener("click", async () => {
+        //     const response = await fetch("/create-order", {
+        //         method: "POST",
+        //     });
+        //     const data = await response.json();
+        //     console.log(data)
+        //     // window.location.href = data.links[1].href
+        // });
     </script>
 </body>
 </html>
