@@ -46,8 +46,19 @@ const createOrder = async (req, res) => {
         );
 
         console.log(access_token);
-        res.json({ access_token, order });
+        // res.json({ access_token, order });
         // make a request
+        axios.post(`https://api-m.sandbox.paypal.com/v2/checkout/orders`,
+            order,
+            {
+                headers: {
+                    Authorization: `Bearer ${access_token}`,
+                },
+            })
+            .then(response => {
+                console.log(response.data);
+                res.send(response.data);
+            })
         // const response = await axios.post(
         //     `https://api-m.sandbox.paypal.com/v2/checkout/orders`,
         //     order,
