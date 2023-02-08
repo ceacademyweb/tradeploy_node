@@ -49,7 +49,7 @@ const createOrder = async (req, res) => {
         // res.json({ access_token, order });
         // make a request
         const response = await axios.post(
-            `${process.env.PAYPAL_API}/v2/checkout/orders`,
+            `https://api-m.sandbox.paypal.com/v2/checkout/orders`,
             order,
             {
                 headers: {
