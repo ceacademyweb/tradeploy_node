@@ -6,9 +6,28 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>TradePloy</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
     <h1>TradePloy</h1>
     <p><%=api%></p>
+    <button id="checkout">Checkout!</button>
+
+    <script>
+        const checkout = document.getElementById("checkout");
+        // checkout.addEventListener('click', () => {
+        //     axios.post('/create-order')
+        //         .then((res)=>{
+        //         console.log(res.data)})
+        // })
+        checkout.addEventListener("click", async () => {
+            const response = await fetch("/create-order", {
+                method: "POST",
+            });
+            const data = await response.json();
+            console.log(data)
+            window.location.href = data.links[1].href
+        });
+    </script>
 </body>
 </html>
