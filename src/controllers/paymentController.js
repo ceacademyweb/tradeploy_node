@@ -60,7 +60,7 @@ const createOrder = async (req, res) => {
         //
         console.log(response.data);
         //
-        return res.json(response.data);
+        return res.send(response.data);
     } catch (error) {
         console.log(error.message);
         return res.status(500).json('Something goes wrong');
