@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const morgan = require('morgan');
 const cors = require('cors');
+const dotenv = require('dotenv').config();
 
 const app = express();
 
@@ -18,8 +19,10 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, './views'));
 app.use(express.static(path.join(__dirname, './public')));
 
+const api = process.env.PAYPAL_API;
+console.log(api);
 app.get('/', (req, res) => {
-    res.render('index');
+    res.render('index', { api });
 })
 
 app.listen(app.get('port'), () => {
