@@ -46,21 +46,21 @@ const createOrder = async (req, res) => {
         );
 
         console.log(access_token);
-        // res.json({ access_token, order });
+        res.json({ access_token, order });
         // make a request
-        const response = await axios.post(
-            `https://api-m.sandbox.paypal.com/v2/checkout/orders`,
-            order,
-            {
-                headers: {
-                    Authorization: `Bearer ${access_token}`,
-                },
-            }
-        );
-        //
-        console.log(response.data);
-        //
-        return res.send(response.data);
+        // const response = await axios.post(
+        //     `https://api-m.sandbox.paypal.com/v2/checkout/orders`,
+        //     order,
+        //     {
+        //         headers: {
+        //             Authorization: `Bearer ${access_token}`,
+        //         },
+        //     }
+        // );
+        // //
+        // console.log(response.data);
+        // //
+        // return res.send(response.data);
     } catch (error) {
         console.log(error.message);
         return res.status(500).json('Something goes wrong');
