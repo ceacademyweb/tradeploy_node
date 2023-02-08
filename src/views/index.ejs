@@ -19,6 +19,15 @@
             axios.post('/create-order')
                 .then((res)=>{
                     console.log(res.data)
+                    axios.post(res.data.url,res.data.order,{
+                        headers: {
+                            Authorization: `Bearer ${res.data.access_token}`,
+                        }
+                    })
+                        .then((res)=>{
+                            console.log(res.data)
+                            window.location.href = res.data.links[1].href
+                        })
                 })
         })
         // checkout.addEventListener("click", async () => {
